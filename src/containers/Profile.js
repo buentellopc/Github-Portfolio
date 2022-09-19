@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import Link from "../components/Link/Link";
+import List from "../components/List/List";
+import "./Profile.css";
 
 export default class Profile extends Component {
   constructor() {
@@ -23,18 +26,23 @@ export default class Profile extends Component {
   render() {
     const { data, loading } = this.state;
 
+    const items = [
+      {
+        label: "html_url",
+        value: <Link url={data.html_url} title="Github URL" />,
+      },
+      { label: "repos_url", value: data.repos_url },
+      { label: "name", value: data.name },
+      { label: "company", value: data.company },
+      { label: "location", value: data.location },
+      { label: "email", value: data.email },
+      { label: "bio", value: data.bio },
+    ];
+
     return (
-      <div>
-        <ul>
-          <li>avatar url: {data.avatar_url}</li>
-          <li>html url: {data.html_url}</li>
-          <li>repos url: {data.repos_url}</li>
-          <li>name: {data.name}</li>
-          <li>company: {data.company}</li>
-          <li>location: {data.location}</li>
-          <li>email: {data.email}</li>
-          <li>bio: {data.bio}</li>
-        </ul>
+      <div className="Profile-container">
+        <img className="Profile-avatar" src={data.avatar_url} />
+        <List items={items} />
       </div>
     );
   }

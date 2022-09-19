@@ -1,15 +1,34 @@
 import React from "react";
 import Header from "../components/Header/Header";
 import logo from "../logo.svg";
-import "./App.css";
 import Profile from "./Profile";
+import styled, { createGlobalStyle } from "styled-components";
+
+const Globalstyle = createGlobalStyle`
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+      "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+`;
+
+const AppWrapper = styled.div`
+  text-align: center;
+`;
 
 function App() {
   return (
-    <div className="App">
-      <Header logo={logo} />
-      <Profile />
-    </div>
+    <>
+      <Globalstyle />
+      <AppWrapper>
+        <Header logo={logo} />
+        <Profile />
+      </AppWrapper>
+    </>
   );
 }
 

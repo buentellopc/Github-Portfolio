@@ -10,22 +10,29 @@ const ListWrapper = styled.ul`
 const ListItem = styled.li`
   display: flex;
   justify-content: space-between;
-}
 `;
 
 const Label = styled.span`
-  font-weight: strong;
+  font-weight: bold;
 `;
 
-export default function List({ items }) {
+const Title = styled.h2`
+  padding: 10px 0;
+  border-bottom: 1px solid lightGrey;
+`;
+
+export default function List({ items, title }) {
   return (
-    <ListWrapper>
-      {items.map((item) => (
-        <ListItem key={item.label}>
-          <Label>{item.label}</Label>
-          {item.value}
-        </ListItem>
-      ))}
-    </ListWrapper>
+    <>
+      <Title>{title}</Title>
+      <ListWrapper>
+        {items.map((item) => (
+          <ListItem key={item.label}>
+            <Label>{item.label}</Label>
+            {item.value}
+          </ListItem>
+        ))}
+      </ListWrapper>
+    </>
   );
 }
